@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="logo.png">
+  <title>Interviews</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: purple;
+      color: white;
+    }
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: orange;
+      padding: 10px 20px;
+    }
+    .navbar img {
+      height: 70px;
+      cursor: pointer;
+    }
+    .menu-button {
+      font-size: 24px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      color: white;
+    }
+    .sidebar {
+      height: 100%;
+      width: 0;
+      position: fixed;
+      top: 0;
+      right: 0;
+      background-color: orange;
+      overflow-x: hidden;
+      transition: 0.5s;
+      padding-top: 60px;
+      z-index: 1000;
+    }
+    .sidebar a {
+      padding: 10px 20px;
+      text-decoration: none;
+      font-size: 20px;
+      color: white;
+      display: block;
+      transition: 0.3s;
+    }
+    .sidebar a:hover {
+      background-color: purple;
+    }
+    .interviews {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      padding: 40px;
+    }
+    .interview-card {
+      background-color: #444; /* Donkergrijs voor de kaartachtergrond */
+      border-radius: 12px;
+      padding: 20px;
+      max-width: 300px;
+      text-align: center;
+      cursor: pointer;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Een lichte schaduw voor een 'kaart' effect */
+    }
+     /* Eventueel een hover effect voor de kaarten */
+    .interview-card:hover {
+        background-color: #555;
+    }
+
+    .interview-card img {
+      max-width: 100%;
+      border-radius: 8px;
+      height: auto; /* Zorgt ervoor dat de hoogte automatisch aanpast */
+      margin-bottom: 15px; /* Ruimte onder de afbeelding */
+    }
+    .popup {
+      display: none;
+      position: fixed;
+      top: 50%; /* Aanpassen voor betere centrering */
+      left: 50%; /* Aanpassen voor betere centrering */
+      transform: translate(-50%, -50%); /* Aanpassen voor betere centrering */
+      width: 90%; /* Iets groter voor kleine schermen */
+      max-width: 700px; /* Maximum breedte */
+      max-height: 90%; /* Maximum hoogte */
+      background-color: white;
+      color: black;
+      overflow-y: auto; /* Scrollen indien nodig */
+      padding: 30px; /* Meer padding */
+      z-index: 2000;
+      border-radius: 8px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4); /* Duidelijkere schaduw */
+    }
+    .popup h2 {
+      color: orange;
+      margin-top: 0; /* Haal standaard marge bovenaan weg */
+      margin-bottom: 20px; /* Ruimte onder de titel */
+      border-bottom: 2px solid orange; /* Lijn onder de titel */
+      padding-bottom: 10px;
+    }
+     .popup p {
+        line-height: 1.6; /* Meer ruimte tussen regels */
+        margin-bottom: 15px; /* Ruimte tussen paragrafen */
+     }
+    .popup-close {
+      position: absolute;
+      top: 15px; /* Iets lager */
+      right: 15px; /* Iets meer naar links */
+      font-size: 30px; /* Groter kruisje */
+      color: red;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+     .popup-close:hover {
+        color: darkred;
+     }
+
+  </style>
+</head>
+<body>
+  <div class="navbar">
+    <a href="Main.html"><img src="logo.png" alt="Logo"></a>
+      <h1>Regiuscollege Smokefree</h1>
+    <button class="menu-button" onclick="openMenu()">☰</button>
+  </div>
+
+  <div id="menu" class="sidebar">
+    <a href="javascript:void(0)" onclick="closeMenu()">Sluit ×</a>
+    <a href="Main.html">Home</a>
+    <a href="Bordspel.html">Bordspel</a>
+    <a href="Escaperoom.html">Escape room</a>
+    <a href="Interviews.html">Interviews</a>
+  </div>
+
+  <div class="interviews">
+    <div class="interview-card" onclick="openPopup(1)">
+      <img src="logo.png" alt="Interview 1">
+      <p>Interview over gestopt te zijn met roken met mijn vader, Wouter Moraal.</p>
+    </div>
+    <div class="interview-card" onclick="openPopup(2)">
+      <img src="logo.png" alt="Interview 2">
+      <p>Interview met ex-roker</p>
+    </div>
+    <div class="interview-card" onclick="openPopup(3)">
+      <img src="logo.png" alt="Interview 3">
+      <p>Interview met ex-roker</p>
+    </div>
+  </div>
+
+  <div id="popup" class="popup">
+    <span class="popup-close" onclick="closePopup()">&times;</span>
+    <div id="popup-content">
+      </div>
+  </div>
+
+  <script>
+    function openMenu() {
+      document.getElementById("menu").style.width = "250px";
+    }
+
+    function closeMenu() {
+      document.getElementById("menu").style.width = "0";
+    }
+
+    function openPopup(id) {
+      const popup = document.getElementById("popup");
+      const content = document.getElementById("popup-content");
+      // Leeg de inhoud eerst voor de zekerheid
+      content.innerHTML = '';
+
+      if (id === 1) {
+        content.innerHTML = '<h2>Interview over gestopt te zijn met roken met mijn vader, Wouter Moraal.</h2><p>Wanneer ben je gestopt met roken?<br>ik ben gestopt met roken in november 2004.</p><p>Wat zijn de redenen dat je bent gestopt met roken?<br>Omdat ik het niet meer prettig vond. Ik vond het niet meer fijn, had veel last van mijn keel, ik vond het gewoon niet meer lekker. Ik was er klaar mee. Het stonken. Dus toen besloot ik "Ik stop ermee!"</p><p>Welke voordelen zitten er allemaal aan dat je gestopt bent met roken?<br>Sowieso financieel, dus je houdt geld over. Je longen worden weer schoon dus je krijgt meer lucht, meer smaak en meer reuk en is sowieso beter voor je hele lichaam, als je niet rookt.</p><p>Heb je sinds je bent gestopt al goede en misschien slechte verandering gevoeld?<br>Goede verandering, wat ik zei dat je geld overhoudt voor andere dingen en dat je je gezonder voelt en dus "sterker" voelt, meer smaak krijgt, meer reuk. Slechte verandering is dat je een beetje zwaarder wordt, want je gaat meer en lekkerder eten.</p><p>Hoe voelde je je de eerste paar dagen nadat je gestopt was?<br>Prima, ik had er geen problemen mee. Ik had, na de laatste keer, geen behoefte meer aan sigaretten en shags.</p><p>Wat vindt uw familie ervan dat u bent gestopt?<br>Die vinden het heel erg fijn dat ik niet meer rook/niet gerookt heb.</p><p>Heeft u veel of weinig steun gehad van je familie en je vrienden?<br>Ik heb veel steun gehad van familie en vrienden.</p><p>Wat was de grootste uitdaging die je tegenkwam toen je probeerde te stoppen?<br>Ik heb er geen moeite mee gehad om te stoppen. Ik was heel bewust bezig met stoppen. Ik was er gewoon klaar mee en daardoor heb ik er geen moeite mee gehad.</p><p>Heb je nog een boodschap en/of tips voor andere rokers die willen stoppen?<br>Zorg dat je achter je keuze staat als je wilt stoppen. Als je er niet achter staat dan gaat het niet lukken.</p><p>Hoe lang rookte je voordat je stopte?<br>Ik denk in totaal ongeveer 20 jaar.</p><p>Ben je door vrienden in aanraking gekomen met roken?<br>Ja. Even proberen. En nog een keer proberen. En het ook lekker vinden. En uiteindelijk verslaafd raken.</p><p>Hoeveel sigaretten rookte je per dag ongeveer.<br>Laatste paar is het zeker wel 15 sigaretjes per dag. Als ik stappen ging, rookte ik iets meer. Zou best zo een pakje geweest kunnen zijn.</p>';
+      } else if (id === 2) {
+        // Dit is het interview met de arts
+        content.innerHTML = '<h2>Interview met ex-roker</h2><p>Hoeveel jaren heeft u gerookt?<br>35 jaar lang.</p><p>Waardoor was u gestopt met roken?<br>omdat het gezonder is, het heel duur werd en ik was er helemaal klaar mee</p><p>Bent u blij dat u gestopt bent met roken?<br>zeker</p><p>Zijn er al veranderingen geweest sinds u gestopt bent met roken?<br>Ik ben eerst aangekomen, ik leef ook gezonder, ik heb meer lucht met sporten, meer conditie, meer energie en ik proef en ruik het eten beter.</p><p>Hoe reageerde uw familie erop dat u wilde stoppen met roken?<br>die moedigden het positief aan.</p><p>Heeft u steun van mensen gehad om te stoppen met roken?<br>eigenlijk niet.</p><p>Welke voordelen zitten er volgens u aan, stoppen met roken?<br>gezonder leven, het bespaart heel veel geld en je ruikt niet meer naar rook</p><p>Wilt u nog wat zeggen tegen andere mensen die willen stoppen?<br>Je moet er echt klaar voor zijn, het willen, veel discipline hebben en de eerste weken zijn lastig maar daarna wordt het makkelijk.</p>';
+      } else if (id === 3) {
+        // Dit is nog placeholder tekst
+        content.innerHTML = '<h2>Interview met een leerling</h2><p>Dit is nog placeholder tekst voor het interview met de leerling.</p><p>De challenge hielp me nadenken over mijn keuzes.</p>';
+      }
+      popup.style.display = "block";
+    }
+
+    function closePopup() {
+      document.getElementById("popup").style.display = "none";
+       // Optioneel: leeg de inhoud van de popup bij sluiten (als je niet wilt dat de vorige inhoud kort zichtbaar is)
+       // document.getElementById("popup-content").innerHTML = '';
+    }
+  </script>
+</body>
+</html>

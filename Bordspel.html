@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="logo.png">
+  <title>Bordspel</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: purple;
+      color: white;
+    }
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: orange;
+      padding: 10px 20px;
+    }
+    .navbar img {
+      height: 70px;
+      cursor: pointer;
+    }
+    .menu-button {
+      font-size: 24px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      color: white;
+    }
+    .sidebar {
+      height: 100%;
+      width: 0;
+      position: fixed;
+      top: 0;
+      right: 0;
+      background-color: orange;
+      overflow-x: hidden;
+      transition: 0.5s;
+      padding-top: 60px;
+      z-index: 1000;
+    }
+    .sidebar a {
+      padding: 10px 20px;
+      text-decoration: none;
+      font-size: 20px;
+      color: white;
+      display: block;
+      transition: 0.3s;
+    }
+    .sidebar a:hover {
+      background-color: purple;
+    }
+    .content {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px;
+    }
+    .image {
+      flex: 1;
+      padding: 20px;
+    }
+    .text {
+      flex: 1;
+      padding: 20px;
+    }
+    .download-button {
+      display: inline-block;
+      padding: 15px 30px;
+      margin-top: 20px;
+      background-color: orange;
+      color: white;
+      font-size: 18px;
+      text-decoration: none;
+      border-radius: 5px;
+    }
+    .download-button:hover {
+      background-color: darkorange;
+    }
+  </style>
+</head>
+<body>
+  <div class="navbar">
+    <a href="Main.html"><img src="logo.png" alt="Logo"></a>
+      <h1>Regiuscollege Smokefree</h1>
+    <button class="menu-button" onclick="openMenu()">☰</button>
+  </div>
+
+  <div id="menu" class="sidebar">
+    <a href="javascript:void(0)" onclick="closeMenu()">Sluit ×</a>
+    <a href="Main.html">Home</a>
+    <a href="Bordspel.html">Bordspel</a>
+    <a href="Escaperoom.html">Escape room</a>
+    <a href="Interviews.html">Interviews</a>
+  </div>
+
+  <div class="content">
+    <div class="image">
+      <img src="bordspel.png" alt="Bordspel" style="max-width: 100%; border-radius: 10px;">
+    </div>
+    <div class="text">
+      <h2>Bordspel</h2>
+      <p>Het bordspel dat perfect is om te spenlen als je over reken wil hebben en de nadelen daar van!</p>
+      <a class="download-button" href="Kaartjes.pdf" download>Download de spel kaartjes</a>
+    </div>
+  </div>
+
+  <script>
+    function openMenu() {
+      document.getElementById("menu").style.width = "250px";
+    }
+
+    function closeMenu() {
+      document.getElementById("menu").style.width = "0";
+    }
+  </script>
+</body>
+</html>

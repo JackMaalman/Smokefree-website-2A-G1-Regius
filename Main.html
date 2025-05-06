@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="logo.png">
+  <title>Smokefree Challenge</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: purple;
+      color: white;
+    }
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: orange;
+      padding: 10px 20px;
+    }
+    .navbar img {
+      height: 70px;
+      cursor: pointer;
+      h1: center
+    }
+    .menu-button {
+      font-size: 24px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      color: white;
+    }
+    .sidebar {
+      height: 100%;
+      width: 0;
+      position: fixed;
+      top: 0;
+      right: 0;
+      background-color: darkorange;
+      overflow-x: hidden;
+      transition: 0.5s;
+      padding-top: 60px;
+      z-index: 1000;
+    }
+    .sidebar a {
+      padding: 10px 20px;
+      text-decoration: none;
+      font-size: 20px;
+      color: white;
+      display: block;
+      transition: 0.3s;
+    }
+    .sidebar a:hover {
+      background-color: purple;
+    }
+    .content {
+      display: flex;
+      padding: 20px;
+    }
+    .video, .image {
+      flex: 1;
+      padding-right: 20px;
+    }
+    .text {
+      flex: 1;
+    }
+    .download-button {
+      display: inline-block;
+      padding: 15px 30px;
+      margin-top: 20px;
+      background-color: orange;
+      color: white;
+      font-size: 18px;
+      text-decoration: none;
+      border-radius: 5px;
+    }
+    a.download-button:hover {
+      background-color: darkorange;
+    }
+  </style>
+</head>
+<body>
+  <div class="navbar">
+    <a href="Main.html"><img src="logo.png" alt="Logo"></a>
+    <h1>Regiuscollege Smokefree</h1>
+    <button class="menu-button" onclick="openMenu()">☰</button>
+  </div>
+
+  <div id="menu" class="sidebar">
+    <a href="javascript:void(0)" onclick="closeMenu()">Sluit ×</a>
+    <a href="Main.html">Home</a>
+    <a href="Bordspel.html">Bordspel</a>
+    <a href="Escaperoom.html">Escape room</a>
+    <a href="Interviews.html">Interviews</a>
+  </div>
+
+  <div class="content">
+    <div class="video">
+      <video width="100%" controls>
+        <source src="video.mp4" type="video/mp4">
+        Je browser ondersteunt de video tag niet.
+      </video>
+    </div>
+    <div class="text">
+      <h2>Over de Smokefree Challenge</h2>
+      <p>De Smokefree Challenge is een initiatief om jongeren bewust te maken van de gevaren van roken en ze aan te moedigen om rookvrij te blijven. Doe mee aan de challenge en maak samen met je klas het verschil!</p>
+    </div>
+  </div>
+
+  <script>
+    function openMenu() {
+      document.getElementById("menu").style.width = "250px";
+    }
+
+    function closeMenu() {
+      document.getElementById("menu").style.width = "0";
+    }
+  </script>
+</body>
+</html>
